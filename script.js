@@ -96,4 +96,86 @@ document.addEventListener("DOMContentLoaded", function () {
   const currentYear = new Date().getFullYear();
   // Set current year as text
   yearElement.textContent = currentYear;
+
+  // Selecting form element
+  const form = document.getElementsByClassName("contact-us");
+
+  // Event listener for form submission
+  form.addEventListener("submit", function (event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Clear existing messages
+    clearError();
+
+    // Validate the form
+    const isValid = validateForm();
+
+    // If form is valid, can submit it or process further
+    if (isValid) {
+      alert("Form submitted succesfully!");
+    }
+  });
+
+  // Function to clear error messages
+  function cleanErrors() {
+    // Select all elements with the class "error-message"
+    const errorMessages = document.querySelectorAll(".error-message");
+
+    // Hide all error messages and remove class
+    errorMessages.forEach(function (error) {
+      error.style.display = "none";
+    });
+
+    // Select all elements with the class "error"
+    const errorFields = document.querySelectorAll(".error");
+    errorFields.forEach(function (field) {
+      field.classList.remove("error");
+    });
+  }
+
+  // Function to validate the form of fields
+  function validateForm() {
+    let isValid = true; // Set form to valid
+
+    // Validate name
+    const name = document.getElementById("name");
+    if (name.ariaValueMax.trim() === "") {
+      showError(email, "Email is required");
+      isValid = false;
+    } else if (!validateEmail(email.value)) {
+      showError(email, "Please enter a valid email address.");
+      isValid = false;
+    }
+    // Validate message
+    const message = document.getElementById("message");
+
+    //check if email input field is empty or consists of whitespace.
+    if (message.value.trim() === "") {
+      showError(message, "Message is required");
+      isValid = false;
+    }
+    return isValid;
+  }
+
+  // Function to show error message
+  function showError(input, message) {
+    // Find error message div linked with input field
+    const errorDiv = document.getElementById(`${input.id}-error`);
+    errorDiv.textContent = message; // Set the error message
+    errorDiv.style.display = "block"; // Display error message
+    input.classList.add("error"); //Add error class to input field
+
+    // Add event listener to remove error message on focus
+    input.addEventListener("focus", function () {
+      errorDiv.style.display = "none"; // Hide error message
+      input.classList.remove("error"); // Remove error class
+    });
+  }
+
+  // Function validate email with regular expression
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
 });
