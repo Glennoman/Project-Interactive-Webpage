@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
   yearElement.textContent = currentYear;
 
   // Selecting form element
-  const form = document.getElementsByClassName("contact-us");
+  const form = document.querySelector(".contact-us form");
 
   // Event listener for form submission
   form.addEventListener("submit", function (event) {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     // Clear existing messages
-    clearError();
+    clearErrors();
 
     // Validate the form
     const isValid = validateForm();
@@ -118,8 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Function to clear error messages
-  function cleanErrors() {
-    // Select all elements with the class "error-message"
+  function clearErrors() {
+    // Select all elemenvts with the class "error-message"
     const errorMessages = document.querySelectorAll(".error-message");
 
     // Hide all error messages and remove class
@@ -140,8 +140,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Validate name
     const name = document.getElementById("name");
-    if (name.ariaValueMax.trim() === "") {
-      showError(email, "Email is required");
+    if (name.value.trim() === "") {
+      showError(name, "Name is required");
+      isValid = false;
+    }
+
+    const email = document.getElementById("email");
+    if (email.value.trim() === "") {
+      showError(email, "Email is required.");
       isValid = false;
     } else if (!validateEmail(email.value)) {
       showError(email, "Please enter a valid email address.");
