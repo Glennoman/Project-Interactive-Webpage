@@ -184,4 +184,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   }
+
+  const submit = document.getElementById("swal");
+
+  submit.addEventListener("click", function () {
+    Swal.fire({
+      title: "Thank you for reaching out!",
+      text: "Form submitted succesfully",
+      icon: "success",
+    });
+  });
 });
