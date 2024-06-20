@@ -107,14 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Clear existing messages
     clearErrors();
-
-    // Validate the form
-    const isValid = validateForm();
-
-    // If form is valid, can submit it or process further
-    if (isValid) {
-      alert("Form submitted succesfully!");
-    }
   });
 
   // Function to clear error messages
@@ -185,13 +177,21 @@ document.addEventListener("DOMContentLoaded", function () {
     return re.test(email);
   }
 
-  const submit = document.getElementById("swal");
-
-  submit.addEventListener("click", function () {
-    Swal.fire({
-      title: "Thank you for reaching out!",
-      text: "Form submitted succesfully",
-      icon: "success",
-    });
+  document.getElementById("swal").addEventListener("click", function () {
+    // Check if the form is valid
+    if (validateForm()) {
+      // Form is valid => show SweetAlert2 msg
+      swal.fire({
+        title: "Thank you for reaching out!",
+        text: "Form submitted succesfully",
+        icon: "success",
+      });
+    } else {
+      swal.fire({
+        title: "Oops!",
+        text: "please fill in all required fields",
+        icon: "error",
+      });
+    }
   });
 });

@@ -485,9 +485,9 @@ button a {
     color: white;
     height: 500px;
     margin: 0px;
+    padding: 30px;
     width: 100%;
     border-top-left-radius: 5%;
-    /* overflow: visible; */
 }
 
 .contact-us-container button {
@@ -501,17 +501,11 @@ button a {
 }
 
 .contact-us h1 {
-    position: relative;
-    top: 50px;
     display: inline;
 }
 
 .contact-us-2 {
-    position: relative;
-    top: 50px;
-    margin-left: 70px;
-    display: inline;
-    width: 15%;
+    width: 10%;
 }
 
 .error-message {

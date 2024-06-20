@@ -156,24 +156,23 @@
     </div>
     <div class="contact-us-container">
         <div class="contact-us">
-            <h1 class="contact-us-2">Contact us</h1>
-            <form>
-                <label class="contact-us-2" for="Name">Name</label><br />
+            <h1>Contact us</h1>
+            <form id="contactform">
+                <label for="Name">Name</label><br />
                 <input class="contact-us-2" type="text" id="name" name="name" placeholder="Enter your name"><br />
                 <div class="error-message" id="name-error"></div>
 
-                <label class="contact-us-2" for="Email">Email</label><br />
+                <label for="Email">Email</label><br />
                 <input class="contact-us-2" type="text" id="email" name="email" placeholder="Enter your email"><br />
                 <div class="error-message" id="email-error"></div>
 
-                <label class="contact-us-2" for="Message">Message</label><br />
+                <label for="Message">Message</label><br />
                 <textarea class="contact-us-2" id="message" name="message" rows="4"
                     placeholder="Enter your message"></textarea><br>
                 <div class="error-message" id="message-error"></div>
 
-                <button class="contact-us-2" id="swal">Submit</button>
+                <button id="swal">Submit</button>
             </form>
-
             <footer>
                 <p>© <span id="year"></span> Your Competitive Programming Platform. All Rights reserved.</p>
             </footer>
